@@ -1,9 +1,12 @@
-
-const TodoData = () => {
+//props là một object 
+const TodoData = (props) => {
+    const { name, age, date } = props
+    console.log(">>> check props: ", props)
     return (
         <div className='todo-data'>
-            <div style={{ textAlign: "center" }}>Learning react</div>
-            <div style={{ textAlign: "center" }}>Learning vite</div>
+            <div>My name is {name}</div>
+            <div>Learning react</div>
+            <div>Learning vite</div>
         </div>
     )
 }
