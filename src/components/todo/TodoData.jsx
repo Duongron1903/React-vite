@@ -1,6 +1,12 @@
 //props là một object 
 const TodoData = (props) => {
-    const { todoList } = props
+    const { todoList, deleteTodo } = props
+
+    const onClickDelete = (id) => {
+        deleteTodo(id);
+        // const newTodoList = todoList.filter((item) => item.id !== id);
+        // setTodoList(newTodoList);
+    }
     return (
         <div className='todo-data'>
             {todoList.map((item, index) => {
@@ -8,7 +14,7 @@ const TodoData = (props) => {
                 return (
                     <div className={`todo-item`} key={item.id} >
                         <div>{item.name}</div>
-                        <button> Delete</button>
+                        <button style={{ cursor: "pointer" }} onClick={() => onClickDelete(item.id)}> Delete</button>
                     </div>
                 )
             })}
