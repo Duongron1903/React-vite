@@ -18,7 +18,10 @@ const App = () => {
   }
 
   const addNewTodo = (name) => {
-    alert(`call me ${name}`)
+    if (name.trim() !== "") {
+      const newTodo = { id: todoList.length + 1, name };
+      setTodoList([...todoList, newTodo]);
+    }
   }
 
   return (
