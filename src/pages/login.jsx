@@ -5,4 +5,3 @@ const LoginPage = () => {
     )
 }
 export default LoginPage;
-// import React from 'react'
