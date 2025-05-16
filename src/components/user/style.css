@@ -1,0 +1,35 @@
+.user-form {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 32px 24px;
+    max-width: 400px;
+    margin: 32px auto;
+}
+
+.user-form>div>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.user-form span {
+    width: 100px;
+    font-weight: 500;
+    margin-right: 12px;
+    font-size: 15px;
+}
+
+.user-form input {
+    flex: 1;
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+    padding: 8px 12px;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.user-form input:focus {
+    border-color: #1677ff;
+    outline: none;
+}
