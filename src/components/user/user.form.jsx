@@ -1,23 +1,26 @@
-import { Button, Input } from "antd";
+import { Button, Input, notification } from "antd";
 import './style.css'; // Đổi lại tên file css
 import { useState } from "react";
 import axios from "axios";
+import { createUserApi } from "../../services/api.service";
 
 const UserForm = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [phone, setPhone] = useState('');
-    const handleClick = () => {
-        const URL_BACKEND = 'http://localhost:8080/api/v1/user';
-        const data = {
-            fullName: fullName,
-            email: email,
-            password: password,
-            phone: phone
+
+    const handleClick = async () => {
+        const res = await createUserApi(fullName, email, password, phone);
+        console.log('Check res:', res);
+        if (res.data) {
+            notification.success({
+                message: 'Create user successfully',
+                description: `User ${res.data.fullName} has been created successfully`,
+            })
         }
-        axios.post(URL_BACKEND, data)
-        console.log('Check:', { fullName, email, password, phone });
+
+        console.log('Check res:', res.data);
     }
 
     return (
