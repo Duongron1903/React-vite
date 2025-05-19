@@ -1,14 +1,23 @@
 import { Button, Input } from "antd";
 import './style.css'; // Đổi lại tên file css
 import { useState } from "react";
+import axios from "axios";
 
 const UserForm = () => {
     const [fullName, setFullName] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Password, setPassword] = useState('');
-    const [PhoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phone, setPhone] = useState('');
     const handleClick = () => {
-        console.log('Check:', { fullName, Email, Password, PhoneNumber });
+        const URL_BACKEND = 'http://localhost:8080/api/v1/user';
+        const data = {
+            fullName: fullName,
+            email: email,
+            password: password,
+            phone: phone
+        }
+        axios.post(URL_BACKEND, data)
+        console.log('Check:', { fullName, email, password, phone });
     }
 
     return (
@@ -25,7 +34,7 @@ const UserForm = () => {
                 <div>
                     <span>Email</span>
                     <Input
-                        value={Email}
+                        value={email}
                         onChange={(event) => { setEmail(event.target.value) }}
                         placeholder="Enter your email"
                     />
@@ -33,7 +42,7 @@ const UserForm = () => {
                 <div>
                     <span>Password</span>
                     <Input
-                        value={Password}
+                        value={password}
                         onChange={(event) => { setPassword(event.target.value) }}
                         placeholder="Enter your password"
                     />
@@ -41,8 +50,8 @@ const UserForm = () => {
                 <div>
                     <span>Phone number</span>
                     <Input
-                        value={PhoneNumber}
-                        onChange={(event) => { setPhoneNumber(event.target.value) }}
+                        value={phone}
+                        onChange={(event) => { setPhone(event.target.value) }}
                         placeholder="Enter your phone number"
                     />
                 </div>
